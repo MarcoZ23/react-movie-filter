@@ -13,14 +13,14 @@ function App() {
   ]
 
   const [genere, setGenere] = useState("")
-  console.log(genere);
+
 
   const [filteredMovies, setFilteredMovies] = useState(movies)
 
   useEffect(() => {
 
     const results = movies.filter((movie) => movie.genre === genere)
-    console.log(results);
+
     setFilteredMovies(results)
   }, [genere])
 
@@ -37,6 +37,11 @@ function App() {
         <option value="Romantico">Romantico</option>
         <option value="Azione">Azione</option>
       </select>
+      <ul className="">
+        {filteredMovies.map((movie, index) => (
+          <li key={index}>{movie.title}</li>
+        ))}
+      </ul>
 
     </>
   )
@@ -44,8 +49,3 @@ function App() {
 
 export default App
 
-{/* <ul className="">
-  {movies.map(movie => (
-    <li key={movie.index}>{movie.title}</li>
-  ))}
-</ul> */}
