@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 function App() {
@@ -15,6 +15,17 @@ function App() {
   const [genere, setGenere] = useState("")
   console.log(genere);
 
+  const [filteredMovies, setFilteredMovies] = useState(movies)
+
+  useEffect(() => {
+
+    const results = movies.filter((movie) => movie.genre === genere)
+    console.log(results);
+    setFilteredMovies(results)
+  }, [genere])
+
+
+
 
   return (
     <>
@@ -25,8 +36,8 @@ function App() {
         <option value="Thriller">Thriller</option>
         <option value="Romantico">Romantico</option>
         <option value="Azione">Azione</option>
-
       </select>
+
     </>
   )
 }
