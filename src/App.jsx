@@ -19,10 +19,18 @@ function App() {
 
   useEffect(() => {
 
-    const results = movies.filter((movie) => movie.genre === genere)
+    if (genere === "") {
+      setFilteredMovies(movies)
+    }
+    else {
+      const results = movies.filter((movie) => movie.genre === genere)
 
-    setFilteredMovies(results)
+      setFilteredMovies(results)
+    }
   }, [genere])
+
+
+
 
 
 
